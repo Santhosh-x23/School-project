@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery Page</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Recovery Page</h1>
+        <a href="/logout">Logout</a>
+    </header>
+    <main>
+        <h2>Deleted Admission Forms</h2>
+        <form method="POST" action="/recover_forms">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Recover</th>
+                        <th>Student ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Class</th>
+                        <th>Pin Code</th>
+                        <th>Reference</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for form in deleted_forms %}
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="recover_ids" value="{{ form._id }}">
+                        </td>
+                        <td>{{ form.student_id }}</td>
+                        <td>{{ form.name }}</td>
+                        <td>{{ form.email }}</td>
+                        <td>{{ form.phone }}</td>
+                        <td>{{ form.class }}</td>
+                        <td>{{ form.pincode }}</td>
+                        <td>{{ form.reference }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit">Recover Selected</button>
+        </form>
+
+        <!-- Delete All Button -->
+        <form method="POST" action="/delete_all_forms" style="margin-top: 20px;">
+            <button type="submit">Delete All Forms</button>
+        </form>
+
+    </main>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/dash.css">
+    <style>
+        .processed {
+            background-color: lightgreen; /* Change row color for processed forms */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <a href="/logout">Logout</a>
+    </header>
+    <main>
+        <h2>Admission Form Details</h2>
+        <form method="POST" action="/delete_forms">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Student ID</th> <!-- Added column for student ID -->
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Class</th>
+                        <th>Pin Code</th>
+                        <th>Reference</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for form in forms %}
+                    <tr class="{{ 'processed' if form.processed else '' }}">
+                        <td>
+                            <input type="checkbox" name="processed_ids" value="{{ form._id }}" 
+                                   {% if form.processed %}checked{% endif %} 
+                                   onchange="updateStatus(this, '{{ form._id }}')">
+                        </td>
+                        <td>{{ form.student_id }}</td> <!-- Displaying the student ID -->
+                        <td>{{ form.name }}</td>
+                        <td>{{ form.email }}</td>
+                        <td>{{ form.phone }}</td>
+                        <td>{{ form.class }}</td>
+                        <td>{{ form.pincode }}</td>
+                        <td>{{ form.reference }}</td>
+                        <td>
+                            <input type="checkbox" name="delete_ids" value="{{ form._id }}">
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button type="submit">Delete Selected</button>
+        </form>
+    </main>
+    <script>
+        function updateStatus(checkbox, formId) {
+            fetch('/update_status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: formId,
+                    processed: checkbox.checked
+                })
+            }).then(response => {
+                if (response.ok) {
+                    checkbox.closest('tr').classList.toggle('processed', checkbox.checked);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

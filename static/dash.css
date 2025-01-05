@@ -1,0 +1,125 @@
+/* General Reset */
+body, h1, h2, table {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    font-weight: 100;
+}
+
+body {
+    background-color: #f3fdf5; /* Light green background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+    background-color: #45a049; /* Green header */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Main Section */
+main {
+    padding: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #45a049;
+    font-weight: 100;
+}
+
+thead th {
+    background-color: #45a049;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ffffff; /* Light green row */
+}
+
+tbody tr:hover {
+    background-color: #c8e6c9; /* Slightly darker green on hover */
+}
+
+tbody td {
+    padding: 10px;
+}
+
+/* Processed Row Styling */
+.processed {
+    background-color: #d4edda !important; /* Green for processed rows */
+}
+
+/* Button Styling */
+button {
+    background-color: #45a049;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #28d131; /* Darker green on hover */
+}
+
+/* Form Styling */
+form {
+    margin-top: 10px;
+}
+
+/* Checkbox Styling */
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+/* Additional Styling for Consistency */
+a {
+    /* color: #45a049; */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
